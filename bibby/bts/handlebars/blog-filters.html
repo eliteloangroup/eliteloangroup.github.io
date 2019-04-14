@@ -1,0 +1,136 @@
+<script id="filter--toggle__tpl" type="text/x-handlebars-template">
+    <span class="closed--message">
+        {{ this.Open }}
+        <span class="fa fa-chevron-circle-down" aria-hidden="true"></span>
+    </span>
+    <span class="open--message">
+        {{ this.Close }}
+        <span class="fa fa-times-circle" aria-hidden="true"></span>
+    </span>
+</script>
+
+<script id="filter--text__tpl" type="text/x-handlebars-template">
+    <div class="filter--menu--inner--options--title">
+        <p><strong>{{ this.ComponentTitle }}</strong></p>
+        <p>{{ this.ComponentText }}</p>
+    </div>
+</script>
+
+<script id="filter--items__tpl" type="text/x-handlebars-template">
+    {{#each .}}
+    <div class="medium-6 columns end">
+
+        <div class="filter--menu--inner--options--toggles--checkboxes wrapp case--study">
+            <legend class="test">{{ Title }}</legend>
+            <div class="row">
+                {{#Items}}
+                <div class="medium-6 columns end">
+                    <div data-index="{{@index}}">
+                        {{#ifEquals ../Type "checkbox"}}
+                        <label for="filters--{{../Type}}--{{formatString Values}}">
+                            <input type="{{../Type}}" id="filters--{{../Type}}--{{formatString Values}}" name="filters--{{../Type}}--{{formatString Values}}" value="{{Values}}" rel="{{ Values }}" />{{ Name }}
+                        </label>
+                        {{/ifEquals}}
+                        {{#ifEquals ../Type "radio"}}
+                        <label for="filters--{{../Type}}--{{formatString Values}}">
+                            <input type="{{../Type}}" id="filters--{{../Type}}--{{formatString Values}}" name="filters--{{../Type}}" value="{{Values}}" rel="{{ Values }}" />{{ Name }}
+                        </label>
+                        {{/ifEquals}}
+                    </div>
+                </div>
+                {{/Items}}
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</script>
+
+<script id="filter--controls__tpl" type="text/x-handlebars-template">
+    <a href="#" class="bts--btn reset--link">{{ this.Reset }}</a>
+</script>
+
+<script id="filter--results__tpl" type="text/x-handlebars-template">
+    <div class="">
+        <div class="article--items--wrapper" id="item-count">
+            {{#each .}}
+            {{#ifCond IsFeaturedArticle true}}
+            {{else}}
+            <div class="article--items article-items-bts-2019" data-category="{{ Tags }}">
+                <div class="article--block__item article-items-bts-2019__item">
+                    {{#if Image includeZero=true}}
+                    <div class="article-items-bts-2019__item__img">
+                        <a href="{{ Url }}" title="Corporate Social Responsibility">
+                            <picture>
+                                <img class="match" src="{{ Image }}" alt="My default image">
+                            </picture>
+                        </a>
+                    </div>
+                    {{/if}}
+                    <div class="article-items-bts-2019__item__content">
+                        <p class="subTitle"><a href="{{ Url }}" title="Corporate Social Responsibility">{{ Tags.[0] }}</a></p>
+                        {{#if Title includeZero=true}}
+                        <h3><a href="{{ Url }}" title="{{ Title }}">{{ Title }}</a></h3>
+                        {{/if}}
+                        {{#if Summary includeZero=true}}
+                        <p>{{ Summary }}</p>
+                        {{/if}}
+                    </div>
+                    {{#if abstractDate includeZero=true}}
+                    <div class="article--block__item__timestamp article-items-bts-2019__item__date">
+                      <p class="date">{{ abstractDate }}</p>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            {{/ifCond}}
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+<script id="filter--feature__tpl" type="text/x-handlebars-template">
+    <div class="row">
+        {{#each .}}
+        {{#ifCond IsFeaturedArticle true}}
+        <div class="columns end article--items article-items-feature" id="featuredArticle" data-category="{{ Tags }}">
+            <div class="article--block__item--feature">
+                <div class="row">
+                    <div class="medium-4 columns match-feature">
+                        {{#if Image includeZero=true}}
+                        <a href="{{ Url }}" title="Corporate Social Responsibility">
+                            <picture>
+                                <img class="match" src="{{ Image }}" alt="My default image">
+                            </picture>
+                        </a>
+                        {{/if}}
+                    </div>
+                    <div class="medium-8 columns match-feature">
+                        <div class="featureBody">
+                            <div class="match">
+                                <p class="subTitle"><a href="{{ Url }}" title="Corporate Social Responsibility">{{ Tags.[0] }}</a></p>
+                                {{#if Title includeZero=true}}
+                                <h3><a href="{{ Url }}" title="{{ Title }}">{{ Title }}</a></h3>
+                                {{/if}}
+                                {{#if Summary includeZero=true}}
+                                <p>{{ Summary }}</p>
+                                {{/if}}
+                            </div>
+                            {{#if abstractDate includeZero=true}}
+                            <div class="article--block__item__timestamp">
+                                <div class="row">
+                                    <div class="small-6 end columns">
+                                        <p class="date">{{ abstractDate }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        {{/ifCond}}
+        {{/each}}
+    </div>
+</script>
