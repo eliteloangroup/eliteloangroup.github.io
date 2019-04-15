@@ -314,7 +314,7 @@
 			}
 		}
 
-		document.forms[whatForm].payAmt.value = "$" + payAmt
+		document.forms[whatForm].payAmt.value = "R" + payAmt
 		//Omniture tag
 		captureLinkAlt('Calculate payment','','','');
 	}
@@ -336,7 +336,7 @@
 		}
 
 
-		document.forms[whatForm].loanAmt.value = "$" + loanAmt
+		document.forms[whatForm].loanAmt.value = "R" + loanAmt
 
 		//Omniture tag
 		captureLinkAlt('Calculate loan amount','','','');
@@ -433,7 +433,7 @@
 				if (i == 1) {
 					formOb[f].elements[formValues[i]].value = "7"
 				} else {
-					formOb[f].elements[formValues[i]].value = "$0"
+					formOb[f].elements[formValues[i]].value = "R0"
 				}
 			}
 			for (var i=0;i<formSelects.length;i++) {
